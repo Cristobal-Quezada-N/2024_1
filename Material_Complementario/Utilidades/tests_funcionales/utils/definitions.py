@@ -34,8 +34,9 @@ class Prog:
         with open(self.test_file.path, 'r', encoding='utf-8') as test_file:
             test_content    = test_file.read()
             test_content    = test_content.splitlines()
-        input_index_start   = test_content.index('Entradas')
-        input_index_end     = test_content.index('Salida')
+        input_index_start   = test_content.index('## Entradas')
+        print(test_content[input_index_start:].index('```'))
+        input_index_end     = test_content.index('## Salida')
         output_index_start  = input_index_end
         output_index_end    = output_index_start + test_content[output_index_start + 2:].index('```')
         input_content       = test_content[input_index_start  + 2 : input_index_end - 1]
